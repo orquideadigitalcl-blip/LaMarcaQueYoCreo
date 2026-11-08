@@ -86,9 +86,9 @@
   .kicker{display:flex;align-items:center;gap:16px;text-transform:uppercase;letter-spacing:.42em;font-size:.78rem;font-weight:600;color:var(--pink-soft)}
   .kicker span{width:48px;height:1px;background:rgba(227,91,184,.5)}
   .hero h1.flyer{text-transform:none;display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:6px 16px;line-height:1}
-  .h-small{font-size:clamp(1rem,2.6vw,1.6rem);letter-spacing:.3em;text-transform:uppercase;font-weight:600;color:var(--ink)}
-  .h-idea{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:700;font-size:clamp(3.6rem,11vw,7rem);letter-spacing:-.03em;background:linear-gradient(180deg,#FFF1D6,#E7B77A);-webkit-background-clip:text;background-clip:text;color:transparent;padding:0 .06em}
-  .h-real{font-family:'Allura','Brush Script MT',cursive;font-weight:400;font-size:clamp(3.8rem,13vw,8rem);letter-spacing:0;flex-basis:100%;text-align:center;line-height:1;padding:.05em .1em;margin-top:-.08em}
+  .h-small{font-size:clamp(.82rem,1.9vw,1.15rem);letter-spacing:.3em;text-transform:uppercase;font-weight:600;color:var(--ink)}
+  .h-idea{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:700;font-size:clamp(2.3rem,7vw,4.1rem);letter-spacing:-.03em;background:linear-gradient(180deg,#FFF1D6,#E7B77A);-webkit-background-clip:text;background-clip:text;color:transparent;padding:0 .06em}
+  .h-real{font-family:'Allura','Brush Script MT',cursive;font-weight:400;font-size:clamp(2.5rem,8vw,4.6rem);letter-spacing:0;flex-basis:100%;text-align:center;line-height:1;padding:.05em .1em;margin-top:-.08em}
   .flyer-sub{text-transform:uppercase;letter-spacing:.12em;font-size:clamp(.82rem,2vw,1.02rem);max-width:640px}
   .pillars-hero{display:grid;grid-template-columns:1fr 1.25fr 1fr;align-items:center;max-width:760px;width:100%;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0}
   .pillars-hero div{padding:0 14px;text-align:center}
@@ -197,9 +197,12 @@
   .step h3{font-size:1.06rem}
   .step p{font-size:.95rem;color:var(--ink-soft)}
   .missing{font-size:.82rem;color:var(--ink-faint)}
+  .submit-wrap{display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line);padding-top:20px}
   .reg-form{display:flex;flex-direction:column;gap:22px}
-  .fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  @media(max-width:560px){.fields{grid-template-columns:1fr}}
+  .fields{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+  @media(max-width:560px){.fields{grid-template-columns:minmax(0,1fr)}}
+  .fields label{min-width:0}
+  .fields input,.fields select{width:100%;min-width:0}
   .fields label{display:flex;flex-direction:column;gap:6px;font-size:.88rem;font-weight:600;color:#E9DCE6}
   .fields label small{font-weight:400;color:var(--ink-faint)}
   .fields input{background:var(--panel-2);color:var(--ink);border:1px solid rgba(227,91,184,.28);border-radius:12px;padding:13px 14px;font:inherit;font-size:1rem;min-height:48px}
@@ -219,6 +222,39 @@
   .paid-text{color:var(--ink-soft)}
   .paid-ok{display:flex;flex-direction:column;gap:14px}
   .paid-ok .big{font-size:1.6rem;font-weight:800;line-height:1.2}
+  .paytabs{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+  .paytab{min-width:0;padding:14px 12px}
+  @media(max-width:480px){.paytabs{grid-template-columns:1fr} .step{gap:10px} .step .n{flex-basis:22px}}
+  .transfer{background:var(--panel-2);border:1px solid rgba(58,175,188,.35);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px}
+  .tdata{display:flex;flex-direction:column;gap:8px}
+  .trow{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"k b" "v b";column-gap:10px;row-gap:2px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:8px}
+  .trow .k{grid-area:k;color:var(--ink-faint);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+  .trow .v{grid-area:v;min-width:0;overflow-wrap:anywhere;color:var(--ink);font-weight:600;font-size:.95rem}
+  .trow .copy{grid-area:b}
+  .copy{background:transparent;border:1px solid rgba(58,175,188,.5);color:var(--teal-soft);border-radius:999px;padding:6px 14px;font:inherit;font-size:.78rem;font-weight:600;cursor:pointer;min-height:40px}
+  .copy:hover{background:rgba(58,175,188,.12)}
+  .copy.all{align-self:flex-start}
+  .fields select{background:var(--panel-2);color:var(--ink);border:1px solid rgba(227,91,184,.28);border-radius:12px;padding:13px 14px;font:inherit;font-size:1rem;min-height:48px}
+  #submit-btn{flex-wrap:wrap;text-align:center;line-height:1.3}
+  #submit-btn [data-f]{white-space:nowrap}
+  /* estados de la entrada */
+  .status{border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:4px;border:1.5px solid}
+  .status small{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700}
+  .status b{font-size:1.2rem;line-height:1.25}
+  .status span{font-size:.92rem}
+  .status.pend{background:rgba(255,196,77,.10);border-color:#FFC44D;color:#FFE1A3}
+  .status.ok{background:rgba(70,214,150,.10);border-color:#46D696;color:#BFF3DA}
+  .hstep{display:flex;gap:14px;align-items:flex-start;border-top:1px solid var(--line);padding-top:18px}
+  .hstep .num{flex:0 0 32px;width:32px;height:32px;border-radius:50%;background:var(--grad);color:var(--dark-on-grad);font-weight:800;display:flex;align-items:center;justify-content:center}
+  .hstep .hb{display:flex;flex-direction:column;gap:10px;flex:1;min-width:0}
+  .hstep h4{font-size:1.06rem;line-height:1.3}
+  .hstep p{font-size:.94rem;color:var(--ink-soft)}
+  .hstep.hot{border-top-color:#FFC44D}
+  .hstep.hot .num{background:#FFC44D}
+  .warn{font-size:.88rem;color:#FFE1A3;background:rgba(255,196,77,.08);border-radius:10px;padding:10px 12px}
+  .pend-bar{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;max-width:560px;margin:0 auto;display:flex;align-items:center;gap:12px;justify-content:space-between;background:#1E1418;border:1.5px solid #FFC44D;border-radius:16px;padding:12px 14px;box-shadow:0 18px 50px -12px rgba(0,0,0,.7)}
+  .pend-bar span{font-size:.88rem;color:#FFE1A3;line-height:1.35}
+  .pend-bar a{flex:0 0 auto;background:#FFC44D;color:#1A0716;text-decoration:none;font-weight:800;font-size:.85rem;padding:10px 16px;border-radius:999px;min-height:44px;display:inline-flex;align-items:center}
 
   /* FAQ */
   .faq{max-width:820px;margin:40px auto 0}
@@ -484,7 +520,7 @@
       <h2 class="title">Reserva tu lugar</h2>
       <p class="lead">Regístrate, paga tu entrada y listo. Tu lugar queda confirmado al completar el pago.</p>
       <p class="note" style="margin-top:14px;font-size:.95rem">¿Dudas antes de comprar? Escríbenos por <a href="https://wa.me/56997966428" target="_blank" rel="noopener">WhatsApp</a>.</p>
-      <button type="button" class="linkbtn" id="open-paid" style="margin-top:6px">¿Ya pagaste? Confirma tu pago aquí →</button>
+      <button type="button" class="linkbtn" id="open-paid" style="margin-top:6px">¿Ya pagaste? Registra tu pago aquí →</button>
     </div>
     <div class="reg-card rv">
       <div id="reg-flow" class="paid">
@@ -511,46 +547,85 @@
         <div class="step">
           <span class="n gt">2</span>
           <div class="b">
-            <h3>Paga tu entrada</h3>
+            <h3>Elige cómo pagar</h3>
+            <div class="paytabs" id="paytabs" role="group" aria-label="Forma de pago">
+              <button type="button" class="opt paytab" data-metodo="online" aria-pressed="true"><b>Pago online</b><span>Tarjeta de débito o crédito</span></button>
+              <button type="button" class="opt paytab" data-metodo="transferencia" aria-pressed="false"><b>Transferencia</b><span>Desde tu banco</span></button>
+            </div>
             <div class="sum"><span>Entrada <span data-f="etapa"></span></span><span data-f="precio"></span></div>
             <div class="sum" id="sum-mg" hidden><span>Meet &amp; Greet con Odette</span><span>$15.000</span></div>
             <div class="sum total"><span>Total</span><span class="gt" data-f="total"></span></div>
-            <button type="submit" id="submit-btn" class="btn full">Registrarme y pagar <span data-f="total"></span></button>
+          </div>
+        </div>
+        <div class="step">
+          <span class="n gt">3</span>
+          <div class="b">
+            <h3>Paga y registra tu pago</h3>
+            <p>Tu entrada queda <b>confirmada</b> cuando pagas y registras tu N° de comprobante. Ahí recibes tu entrada por correo y el acceso al grupo de WhatsApp del evento.</p>
+          </div>
+        </div>
+        <div class="submit-wrap">
+            <button type="submit" id="submit-btn" class="btn full"><span>Registrarme y continuar</span> <span data-f="total"></span></button>
             <p id="form-msg" class="form-msg" role="status" aria-live="polite"></p>
             <span id="pay-missing" class="missing" hidden></span>
-            <p class="note">Al tocar el botón guardamos tu registro y abrimos el pago seguro de Mercado Pago en otra pestaña.</p>
-          </div>
+            <p class="note">Primero guardamos tu registro. En el siguiente paso te mostramos cómo pagar y dónde registrar tu pago para confirmar tu entrada.</p>
         </div>
       </form>
-      <div class="step">
-        <span class="n gt">3</span>
-        <div class="b">
-          <h3>Confirma tu pago</h3>
-          <p>Vuelve aquí, toca "Ya pagué" con tu N° de operación y recibe al instante el acceso al grupo de WhatsApp del evento.</p>
-        </div>
-      </div>
       </div>
 
-      <!-- PASO FINAL: "YA PAGUÉ" -->
+      <!-- PASO FINAL: PAGAR Y REGISTRAR EL PAGO -->
       <div id="ya-pague" class="paid" hidden>
-        <div class="reg-label">Último paso</div>
-        <h3 id="paid-title">Confirma tu pago y entra al grupo del evento</h3>
-        <p class="paid-text" id="paid-intro">Abrimos Mercado Pago en otra pestaña. Cuando termines de pagar, vuelve aquí y confirma tu pago con el N° de operación.</p>
-        <a id="paid-paylink" class="btn ghost full" href="#" target="_blank" rel="noopener" hidden>Ir a pagar <span data-f="total"></span></a>
-        <form id="paid-form" class="reg-form" novalidate>
-          <div class="fields">
-            <label>Correo con el que te registraste<input name="correo" type="email" autocomplete="email" placeholder="tu@correo.com" required></label>
-            <label>N° de operación de Mercado Pago<input name="operacion" type="text" inputmode="numeric" placeholder="Ej: 123456789012" required></label>
+        <div class="status pend" id="status-pend">
+          <small>Estado de tu entrada</small>
+          <b>⏳ Pendiente · aún no está confirmada</b>
+          <span>Se confirma cuando completas los 2 pasos de abajo.</span>
+        </div>
+
+        <div class="hstep" id="step-pay">
+          <span class="num">1</span>
+          <div class="hb">
+            <h4 id="pay-title">Paga <span data-f="total"></span></h4>
+            <div id="pay-online">
+              <p>Toca el botón para pagar con tarjeta. Se abre en otra pestaña: <b>no cierres esta página</b>, la necesitas para el paso 2.</p>
+              <a id="paid-paylink" class="btn full" href="#" target="_blank" rel="noopener" style="margin-top:10px">Ir a pagar <span data-f="total"></span></a>
+              <p class="note" style="margin-top:8px">Al terminar, guarda o anota el N° de orden o código de autorización del comprobante.</p>
+            </div>
+            <div id="paid-transfer" class="transfer" hidden>
+              <div class="reg-label">Datos para transferir · <span data-f="total"></span></div>
+              <div class="tdata" data-transfer></div>
+              <p class="note">Transfiere el monto exacto y guarda el comprobante de tu banco.</p>
+            </div>
           </div>
-          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <p class="note">Lo encuentras en el comprobante de Mercado Pago o en el correo que te envía después de pagar.</p>
-          <button type="submit" id="paid-btn" class="btn full">Ya pagué · confirmar</button>
-          <p id="paid-msg" class="form-msg" role="status" aria-live="polite"></p>
-        </form>
+        </div>
+
+        <div class="hstep hot" id="step-reg">
+          <span class="num">2</span>
+          <div class="hb">
+            <h4 id="paid-title">Registra tu pago para confirmar tu entrada</h4>
+            <p class="warn" id="paid-warn">Sin este paso tu entrada queda pendiente, aunque ya hayas pagado.</p>
+            <form id="paid-form" class="reg-form" novalidate>
+              <div class="fields">
+                <label>Correo con el que te registraste<input name="correo" type="email" autocomplete="email" placeholder="tu@correo.com" required></label>
+                <label>¿Cómo pagaste?<select name="metodo"><option value="online">Pago online (tarjeta)</option><option value="transferencia">Transferencia</option></select></label>
+                <label style="grid-column:1/-1">N° de comprobante<input name="operacion" type="text" autocomplete="off" placeholder="N° de orden, código de autorización o N° de transferencia" required></label>
+              </div>
+              <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <p class="note">Pago online: está en el comprobante (N° de orden o código de autorización). Transferencia: en el comprobante de tu banco.</p>
+              <button type="submit" id="paid-btn" class="btn full">Registrar mi pago y confirmar mi entrada</button>
+              <p id="paid-msg" class="form-msg" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+
         <div id="paid-ok" class="paid-ok" hidden>
-          <div class="big gt">¡Tu lugar está confirmado!</div>
-          <p class="paid-text" id="paid-ok-text">Únete al grupo de WhatsApp del evento: ahí compartiremos detalles, recordatorios y novedades. También te enviamos el link a tu correo.</p>
+          <div class="status ok">
+            <small>Estado de tu entrada</small>
+            <b>✅ ¡Confirmada! Tu entrada está lista</b>
+            <span id="paid-code"></span>
+          </div>
+          <p class="paid-text" id="paid-ok-text">Te enviamos tu entrada confirmada a tu correo. Únete al grupo de WhatsApp del evento: ahí compartiremos detalles, recordatorios y novedades.</p>
           <a id="group-link" class="btn full" href="#" target="_blank" rel="noopener">Unirme al grupo de WhatsApp</a>
+          <a id="comp-link" class="btn ghost full" href="#" target="_blank" rel="noopener" hidden>Enviar mi comprobante por WhatsApp</a>
         </div>
         <button type="button" class="linkbtn" id="back-reg">← Volver al registro</button>
       </div>
@@ -572,7 +647,7 @@
       <details><summary>¿Qué es el Meet &amp; Greet? <span class="plus gt">+</span></summary><p>Un encuentro en grupo pequeño con Odette después del cierre: ronda de preguntas, foto y un detalle de su marca. Son solo 20 cupos (hoy quedan 15) y se agrega por $15.000 al comprar tu entrada.</p></details>
       <details><summary>¿Cómo funcionan las etapas de precio? <span class="plus gt">+</span></summary><p>Early Bird es solo para las primeras 20 personas (hoy quedan 15). Luego se abre la Preventa por tiempo limitado y después la Venta general, hasta completar las 100 personas.</p></details>
       <details><summary>¿Necesito tener una marca o empresa formal? <span class="plus gt">+</span></summary><p>No. Este día es para cualquier persona que quiera entender y fortalecer la marca que está creando, ya sea un emprendimiento, un proyecto o su marca personal.</p></details>
-      <details><summary>¿Cómo recibo mi entrada y qué pasa si no puedo asistir? <span class="plus gt">+</span></summary><p>Al completar tu compra recibirás la confirmación por correo. [Política de cambios, transferencias y devoluciones].</p></details>
+      <details><summary>¿Cómo recibo mi entrada y qué pasa si no puedo asistir? <span class="plus gt">+</span></summary><p>Al registrarte te llega un correo con tu entrada <b>pendiente</b>. Cuando pagas y registras tu N° de comprobante, te llega tu entrada <b>confirmada</b> con tu código. [Política de cambios, transferencias y devoluciones].</p></details>
     </div>
     <div class="center cta-block"><a href="#entradas" class="btn">Quiero mi entrada</a></div>
   </div>
@@ -587,6 +662,11 @@
     <div class="meta">Solo 100 lugares · <span data-f="etapa"></span> <span data-f="precio"></span> · Meet &amp; Greet +$15.000</div>
   </div>
 </section>
+
+<div class="pend-bar" id="pend-bar" hidden role="status">
+  <span>⏳ Tu entrada aún <b>no está confirmada</b>. Registra tu pago para asegurar tu lugar.</span>
+  <a href="#registro" id="pend-bar-go">Registrar pago</a>
+</div>
 
 <footer>
   <div class="f">
@@ -618,7 +698,7 @@ var CONFIG = {
   cuposMeetGreet: 15,           // cupos de Meet & Greet que quedan (de 20)
   urlAppsScript: 'https://script.google.com/macros/s/AKfycbxyWS-MFQR6jiU7kl-_2igI_yNuvd0aKgm8qaU4cYoNMfvlDc3Ovw0FUcI0B6RWjW098w/exec',            // pega aquí la URL de tu Apps Script (termina en /exec)
 
-  // Links de Mercado Pago por etapa (la página usa solo los de la etapa activa)
+  // Links de PAGO ONLINE por etapa (hoy Webpay; si cambian de plataforma, solo cambia el link)
   linksEntrada: {
     'Early Bird':    'https://www.webpay.cl/form-pay/437769',   // $20.000
     'Preventa':      'https://mpago.li/1kpmCxg',   // $25.000
@@ -628,7 +708,19 @@ var CONFIG = {
     'Early Bird':    'https://www.webpay.cl/form-pay/437771',   // $35.000 (20.000 + 15.000)
     'Preventa':      '',                           // $40.000 — pendiente
     'Venta general': ''                            // $50.000 — pendiente
-  }
+  },
+
+  // Pago por transferencia (activa: false para ocultar la opción)
+  transferencia: {
+    activa: true,
+    titular:      'Odette Charlotte Abboud Rios',
+    rut:          '26.207.965-1',
+    banco:        'Mercado Pago',
+    tipoCuenta:   'Cuenta Vista',
+    numeroCuenta: '1029953168',
+    correo:       'orquideadigital.cl@gmail.com'
+  },
+  whatsappComprobante: '56997966428'   // número que recibe los comprobantes de transferencia (solo dígitos)
 };
 /* ===================================================================== */
 
@@ -662,16 +754,61 @@ var CONFIG = {
   var payBtn = document.getElementById('submit-btn'), payMissing = document.getElementById('pay-missing');
   var form = document.getElementById('reg-form'), msg = document.getElementById('form-msg');
   function currentLink(){ return (mg ? CONFIG.linksMeetGreet : CONFIG.linksEntrada)[ETAPAS[idx]] || ''; }
+
+  /* ---------- memoria de la reserva pendiente (en este navegador) ---------- */
+  var KEY = 'lmqyc_reserva';
+  function guardar(o){ try { localStorage.setItem(KEY, JSON.stringify(o)); } catch(e){} }
+  function leer(){ try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch(e){ return null; } }
+  function borrar(){ try { localStorage.removeItem(KEY); } catch(e){} }
+
+  /* ---------- transferencia ---------- */
+  var T = CONFIG.transferencia || {};
+  var transferActiva = !!T.activa;
+  var metodo = 'online';
+  var filasT = [['Titular', T.titular], ['RUT', T.rut], ['Banco', T.banco], ['Tipo de cuenta', T.tipoCuenta], ['N° de cuenta', T.numeroCuenta], ['Correo', T.correo]]
+    .filter(function(f){ return f[1]; });
+  function textoTransferencia(monto){
+    return filasT.map(function(f){ return f[0] + ': ' + f[1]; }).join('\n') + '\nMonto: ' + (monto || fmt(mg ? precioMG : precio));
+  }
+  function copiar(texto, btn){
+    var ok = function(){ var t = btn.textContent; btn.textContent = '¡Copiado!'; setTimeout(function(){ btn.textContent = t; }, 1500); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(texto).then(ok, function(){});
+    else { var a = document.createElement('textarea'); a.value = texto; document.body.appendChild(a); a.select(); try { document.execCommand('copy'); ok(); } catch(e){} a.remove(); }
+  }
+  document.querySelectorAll('[data-transfer]').forEach(function(box){
+    filasT.forEach(function(f){
+      var row = document.createElement('div'); row.className = 'trow';
+      var k = document.createElement('span'); k.className = 'k'; k.textContent = f[0];
+      var v = document.createElement('span'); v.className = 'v'; v.textContent = f[1];
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'copy'; b.textContent = 'Copiar';
+      b.addEventListener('click', function(){ copiar(f[1], b); });
+      row.appendChild(k); row.appendChild(v); row.appendChild(b); box.appendChild(row);
+    });
+    var all = document.createElement('button'); all.type = 'button'; all.className = 'copy all'; all.textContent = 'Copiar todos los datos';
+    all.addEventListener('click', function(){ copiar(textoTransferencia(), all); });
+    box.appendChild(all);
+  });
+  if (!transferActiva) document.getElementById('paytabs').hidden = true;
+  document.querySelectorAll('.paytab').forEach(function(b){
+    b.addEventListener('click', function(){ metodo = b.dataset.metodo; render(); });
+  });
+
   function render(){
     setAll('total', fmt(mg ? precioMG : precio));
     document.getElementById('sum-mg').hidden = !mg;
-    document.querySelectorAll('.opt').forEach(function(o){ o.setAttribute('aria-pressed', String((o.dataset.pick === 'mg') === mg)); });
+    document.querySelectorAll('.opt[data-pick]').forEach(function(o){ o.setAttribute('aria-pressed', String((o.dataset.pick === 'mg') === mg)); });
+    document.querySelectorAll('.paytab').forEach(function(o){ o.setAttribute('aria-pressed', String(o.dataset.metodo === metodo)); });
     var link = currentLink();
-    if (link) { payBtn.hidden = false; payMissing.hidden = true; }
-    else { payBtn.hidden = true; payMissing.hidden = false; payMissing.textContent = mg ? 'Las entradas con Meet & Greet de esta etapa se habilitan pronto. Escríbenos por WhatsApp para reservar.' : 'Las entradas de esta etapa se habilitan pronto. Escríbenos por WhatsApp para reservar.'; }
+    if (metodo === 'transferencia' || link) { payBtn.hidden = false; payMissing.hidden = true; }
+    else {
+      payBtn.hidden = true; payMissing.hidden = false;
+      payMissing.textContent = transferActiva
+        ? 'El pago online de esta opción se habilita pronto. Puedes pagar por transferencia.'
+        : (mg ? 'Las entradas con Meet & Greet de esta etapa se habilitan pronto. Escríbenos por WhatsApp para reservar.' : 'Las entradas de esta etapa se habilitan pronto. Escríbenos por WhatsApp para reservar.');
+    }
   }
 
-  /* envío del registro a Google Sheets (Apps Script) y paso al pago */
+  /* ---------- registro (Apps Script) ---------- */
   form.addEventListener('input', function(ev){ ev.target.classList.remove('err'); if (msg.classList.contains('bad')) { msg.textContent = ''; msg.className = 'form-msg'; } });
   form.addEventListener('submit', function(ev){
     ev.preventDefault();
@@ -681,10 +818,10 @@ var CONFIG = {
       i.classList.toggle('err', bad); if (bad) ok = false;
     });
     if (!ok) { msg.className = 'form-msg bad'; msg.textContent = 'Revisa los campos marcados para continuar.'; return; }
-    var link = currentLink(); if (!link) return;
-
-    // abre Mercado Pago en otra pestaña (debe ser inmediato al toque para que el navegador lo permita)
-    var win = window.open(link, '_blank');
+    var esT = metodo === 'transferencia';
+    var link = esT ? '' : currentLink();
+    if (!esT && !link) return;
+    var total = fmt(mg ? precioMG : precio);
 
     var data = new URLSearchParams();
     new FormData(form).forEach(function(v, k){ data.append(k, v); });
@@ -693,58 +830,97 @@ var CONFIG = {
     data.append('etapa', ETAPAS[idx]);
     data.append('monto', String(mg ? precioMG : precio));
     data.append('linkPago', link);
+    data.append('metodo', metodo);
+    if (esT) data.append('datosTransferencia', textoTransferencia(total));
     data.append('origen', location.hostname || 'prueba local');
     data.append('pagina', location.href.split('#')[0]);
     if (CONFIG.urlAppsScript) {
       fetch(CONFIG.urlAppsScript, { method: 'POST', mode: 'no-cors', body: data, keepalive: true }).catch(function(){});
     } else { console.warn('Falta CONFIG.urlAppsScript: el registro no se guardó.'); }
 
-    mostrarPagado(form.elements.correo.value.trim(), link, !win);
+    var reserva = { correo: form.elements.correo.value.trim(), link: link, metodo: metodo, total: total };
+    guardar(reserva);
+    mostrarPagado(reserva, true);
   });
 
-  /* ---------- paso final: "Ya pagué" ---------- */
+  /* ---------- paso final: pagar y registrar el pago ---------- */
   var regFlow = document.getElementById('reg-flow'), paid = document.getElementById('ya-pague');
   var paidForm = document.getElementById('paid-form'), paidMsg = document.getElementById('paid-msg');
   var paidBtn = document.getElementById('paid-btn'), paidOk = document.getElementById('paid-ok');
-  var payLinkBtn = document.getElementById('paid-paylink'), intro = document.getElementById('paid-intro');
-  var groupLink = document.getElementById('group-link');
-
-  function mostrarPagado(correo, link, bloqueado){
-    regFlow.hidden = true; paid.hidden = false; paidOk.hidden = true; paidForm.hidden = false;
-    if (correo) paidForm.elements.correo.value = correo;
-    if (link && bloqueado) {
-      payLinkBtn.href = link; payLinkBtn.hidden = false;
-      intro.textContent = 'Tu registro está listo. Toca el botón para pagar en Mercado Pago y, cuando termines, vuelve aquí y confirma tu pago con el N° de operación.';
-    } else if (link) {
-      payLinkBtn.href = link; payLinkBtn.hidden = true;
-      intro.textContent = 'Abrimos Mercado Pago en otra pestaña. Cuando termines de pagar, vuelve aquí y confirma tu pago con el N° de operación.';
-    } else {
-      payLinkBtn.hidden = true;
-      intro.textContent = 'Si ya pagaste tu entrada, confirma tu pago con el correo con que te registraste y el N° de operación de Mercado Pago.';
-    }
-    document.getElementById('registro').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  var payLinkBtn = document.getElementById('paid-paylink');
+  var groupLink = document.getElementById('group-link'), compLink = document.getElementById('comp-link');
+  var paidTransfer = document.getElementById('paid-transfer'), payOnline = document.getElementById('pay-online');
+  var stepPay = document.getElementById('step-pay'), stepReg = document.getElementById('step-reg');
+  var statusPend = document.getElementById('status-pend'), pendBar = document.getElementById('pend-bar');
+  var fuiAPagar = false, tieneReserva = false, panelVisible = false;
+  function actualizarBarra(){ pendBar.hidden = !tieneReserva || panelVisible || !paidOk.hidden; }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(en){ panelVisible = en[0].isIntersecting; actualizarBarra(); }, { threshold: 0.05 }).observe(paid);
   }
-  document.getElementById('open-paid').addEventListener('click', function(){ mostrarPagado('', '', false); });
+  if (!transferActiva) paidForm.elements.metodo.closest('label').hidden = true;
+
+  function mostrarPago(met, link, total){
+    var esT = met === 'transferencia';
+    paidForm.elements.metodo.value = esT ? 'transferencia' : 'online';
+    paidTransfer.hidden = !esT;
+    payOnline.hidden = esT || !link;
+    if (link) payLinkBtn.href = link;
+    if (total) document.querySelectorAll('#ya-pague [data-f="total"]').forEach(function(e){ e.textContent = total; });
+    stepPay.hidden = !(esT || link);
+  }
+  function mostrarPagado(reserva, desplazar){
+    regFlow.hidden = true; paid.hidden = false; paidOk.hidden = true; stepReg.hidden = false; statusPend.hidden = false;
+    paidForm.hidden = false;
+    reserva = reserva || {};
+    if (reserva.correo) paidForm.elements.correo.value = reserva.correo;
+    if (reserva.metodo) { mostrarPago(reserva.metodo, reserva.link, reserva.total); }
+    else { stepPay.hidden = true; }
+    document.getElementById('step-reg').querySelector('.num').textContent = stepPay.hidden ? '✓' : '2';
+    tieneReserva = !!reserva.metodo; actualizarBarra();
+    if (desplazar) document.getElementById('registro').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  paidForm.elements.metodo.addEventListener('change', function(){
+    if (stepPay.hidden && transferActiva && paidForm.elements.metodo.value === 'transferencia') { paidTransfer.hidden = false; }
+  });
+  payLinkBtn.addEventListener('click', function(){ fuiAPagar = true; });
+
+  /* al volver desde la pestaña de pago, lleva directo a registrar el pago */
+  document.addEventListener('visibilitychange', function(){
+    if (document.visibilityState !== 'visible' || !fuiAPagar || paid.hidden || !paidOk.hidden) return;
+    fuiAPagar = false;
+    stepReg.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    paidMsg.className = 'form-msg'; paidMsg.textContent = '¿Ya pagaste? Escribe aquí tu N° de comprobante para confirmar tu entrada.';
+    setTimeout(function(){ try { paidForm.elements.operacion.focus({ preventScroll: true }); } catch(e){} }, 600);
+  });
+
+  document.getElementById('open-paid').addEventListener('click', function(){ mostrarPagado(leer() || {}, true); });
+  document.getElementById('pend-bar-go').addEventListener('click', function(ev){
+    ev.preventDefault(); mostrarPagado(leer() || {}, false); stepReg.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
   document.getElementById('back-reg').addEventListener('click', function(){
     paid.hidden = true; regFlow.hidden = false; payBtn.disabled = false; msg.textContent = '';
   });
-  if (location.hash === '#ya-pague') mostrarPagado('', '', false);
+  var guardada = leer();
+  if (location.hash === '#ya-pague') mostrarPagado(guardada || {}, true);
+  else if (guardada) { mostrarPagado(guardada, false); }
 
   paidForm.addEventListener('input', function(ev){ ev.target.classList.remove('err'); });
   paidForm.addEventListener('submit', function(ev){
     ev.preventDefault();
     var correo = paidForm.elements.correo, op = paidForm.elements.operacion;
+    var opLimpio = op.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
     var badC = !correo.value.trim() || !correo.checkValidity();
-    var badO = op.value.replace(/\D/g, '').length < 6;
+    var badO = opLimpio.length < 4;
     correo.classList.toggle('err', badC); op.classList.toggle('err', badO);
-    if (badC || badO) { paidMsg.className = 'form-msg bad'; paidMsg.textContent = badO && !badC ? 'El N° de operación debe tener al menos 6 números.' : 'Revisa los campos marcados.'; return; }
-    if (!CONFIG.urlAppsScript) { paidMsg.className = 'form-msg bad'; paidMsg.textContent = 'La confirmación aún no está activa. Escríbenos por WhatsApp.'; return; }
+    if (badC || badO) { paidMsg.className = 'form-msg bad'; paidMsg.textContent = badO && !badC ? 'El N° de comprobante debe tener al menos 4 caracteres.' : 'Revisa los campos marcados.'; return; }
+    if (!CONFIG.urlAppsScript) { paidMsg.className = 'form-msg bad'; paidMsg.textContent = 'El registro de pagos aún no está activo. Escríbenos por WhatsApp.'; return; }
 
-    paidBtn.disabled = true; paidMsg.className = 'form-msg'; paidMsg.textContent = 'Confirmando tu pago…';
+    paidBtn.disabled = true; paidMsg.className = 'form-msg'; paidMsg.textContent = 'Registrando tu pago…';
     var data = new URLSearchParams();
     data.append('accion', 'pago');
     data.append('correo', correo.value.trim());
-    data.append('operacion', op.value.replace(/\D/g, ''));
+    data.append('operacion', opLimpio);
+    data.append('metodo', paidForm.elements.metodo.value);
     data.append('website', paidForm.elements.website.value);
 
     fetch(CONFIG.urlAppsScript, { method: 'POST', body: data })
@@ -752,20 +928,27 @@ var CONFIG = {
       .then(function(res){
         paidBtn.disabled = false;
         if (res && res.ok) {
-          paidForm.hidden = true; paidOk.hidden = false; intro.hidden = true; payLinkBtn.hidden = true;
-          document.getElementById('paid-title').hidden = true; document.getElementById('back-reg').hidden = true;
+          borrar(); tieneReserva = false; pendBar.hidden = true;
+          statusPend.hidden = true; stepPay.hidden = true; stepReg.hidden = true; paidOk.hidden = false;
+          document.getElementById('back-reg').hidden = true;
+          document.getElementById('paid-code').textContent = res.codigo ? 'Código de entrada: ' + res.codigo + ' · también te la enviamos por correo.' : 'También te la enviamos por correo.';
+          if (paidForm.elements.metodo.value === 'transferencia' && CONFIG.whatsappComprobante) {
+            compLink.href = 'https://wa.me/' + CONFIG.whatsappComprobante + '?text=' + encodeURIComponent('Hola, envío el comprobante de mi transferencia para La marca que yo creo. N° ' + opLimpio);
+            compLink.hidden = false;
+          }
           if (res.grupo) { groupLink.href = res.grupo; groupLink.hidden = false; }
-          else { groupLink.hidden = true; document.getElementById('paid-ok-text').textContent = 'Te enviamos todos los detalles del evento a tu correo.'; }
+          else { groupLink.hidden = true; document.getElementById('paid-ok-text').textContent = 'Te enviamos tu entrada confirmada y todos los detalles del evento a tu correo.'; }
+          paidOk.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else if (res && res.error === 'operacion_usada') {
-          paidMsg.className = 'form-msg bad'; paidMsg.textContent = 'Ese N° de operación ya fue registrado por otra persona. Escríbenos por WhatsApp y lo revisamos.';
+          paidMsg.className = 'form-msg bad'; paidMsg.textContent = 'Ese N° de comprobante ya fue registrado por otra persona. Escríbenos por WhatsApp y lo revisamos.';
         } else {
-          paidMsg.className = 'form-msg bad'; paidMsg.textContent = 'Revisa tu correo y el N° de operación e inténtalo de nuevo.';
+          paidMsg.className = 'form-msg bad'; paidMsg.textContent = 'Revisa tu correo y el N° de comprobante e inténtalo de nuevo.';
         }
       })
       .catch(function(){
         paidBtn.disabled = false;
         paidMsg.className = 'form-msg bad';
-        paidMsg.textContent = 'No pudimos confirmar en este momento. Revisa tu correo en unos minutos o escríbenos por WhatsApp.';
+        paidMsg.textContent = 'No pudimos registrar tu pago en este momento. Inténtalo de nuevo en unos minutos o escríbenos por WhatsApp.';
       });
   });
   document.querySelectorAll('[data-pick]').forEach(function(el){
