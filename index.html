@@ -167,6 +167,13 @@
   .tk .pv{align-self:flex-start;font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px;background:var(--grad);color:var(--dark-on-grad)}
   .tk .pv.up{background:rgba(58,175,188,.16);color:var(--teal-soft);border:1px solid rgba(58,175,188,.4)}
   .tk h3{font-size:1.5rem;margin-top:12px}
+  .tk.online{grid-column:1/-1;border-color:rgba(58,175,188,.5);background:radial-gradient(80% 90% at 0% 0%,rgba(58,175,188,.16),transparent 60%),linear-gradient(180deg,#121519,#0F0B14);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);grid-template-areas:"l u" "b u";gap:10px 40px;align-items:start}
+  .tk.online .on-l{grid-area:l} .tk.online ul{grid-area:u} .tk.online .on-btn{grid-area:b;align-self:end}
+  .tk.online .pv{background:rgba(58,175,188,.16);color:var(--teal-soft);border:1px solid rgba(58,175,188,.4)}
+  .tk.online .on-l{display:flex;flex-direction:column;gap:6px}
+  .tk.online .on-l p{color:var(--ink-soft);font-size:.95rem;margin-bottom:18px}
+  .tk.online ul{margin-bottom:0}
+  @media(max-width:820px){.tk.online{grid-template-columns:1fr;grid-template-areas:"l" "u" "b"}.tk.online ul{margin-bottom:8px}}
   .tk .price{font-size:2.9rem;font-weight:800;line-height:1.15}
   .tk .price small{font-size:1rem;font-weight:600;color:var(--ink-soft);-webkit-text-fill-color:var(--ink-soft)}
   .tk .price-note{color:var(--ink-faint);font-size:.88rem;margin-bottom:22px}
@@ -186,6 +193,7 @@
   .reg-label{font-size:.85rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-soft)}
   .opts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   @media(max-width:520px){.opts{grid-template-columns:1fr}}
+  .opt.wide{grid-column:1/-1}
   .opt{text-align:left;background:var(--panel-2);border:1.5px solid rgba(227,91,184,.24);border-radius:14px;padding:16px;cursor:pointer;font:inherit;color:var(--ink);min-height:64px;display:flex;flex-direction:column;gap:2px}
   .opt b{font-size:1rem}
   .opt span{font-size:.88rem;color:var(--ink-soft)}
@@ -324,6 +332,7 @@
       <span class="badge">Sáb 12 Dic 2026</span>
       <span class="badge">MR Hotel · Providencia</span>
       <span class="badge t">Presencial · Solo 100 lugares</span>
+      <span class="badge t">También online en vivo</span>
     </div>
     <img data-logo class="hero-logo floaty" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="La marca que yo creo">
     <div class="kicker rv"><span></span>Evento presencial<span></span></div>
@@ -507,8 +516,25 @@
         </ul>
         <a href="#registro" class="btn full" data-pick="mg">Comprar con Meet &amp; Greet</a>
       </div>
+      <div class="tk online rv">
+        <div class="on-l">
+          <span class="pv">Transmisión en vivo</span>
+          <h3>Entrada Online</h3>
+          <div class="price gt"><span data-f="precio-online"></span> <small>CLP</small></div>
+          <p>¿Estás fuera de Santiago o fuera de Chile? Vive La marca que yo creo en vivo desde donde estés.</p>
+        </div>
+        <a href="#registro" class="btn ghost full on-btn" data-pick="online">Comprar entrada online</a>
+        <ul>
+          <li><span class="ic g">✓</span><span class="txt">Transmisión en vivo de la jornada, el sábado 12 de diciembre</span></li>
+          <li><span class="ic g">✓</span><span class="txt">Todas las ponencias: Ghadi, Flavyeanne y Odette</span></li>
+          <li><span class="ic g">✓</span><span class="txt">Mesa redonda con Kervy y Liss + video de Wilker Smith</span></li>
+          <li><span class="ic g">✓</span><span class="txt">Participación en los espacios de preguntas y respuestas (Q&amp;A)</span></li>
+          <li><span class="ic g">✓</span><span class="txt">Desde cualquier ciudad o país</span></li>
+          <li class="off"><span class="ic">✕</span><span class="txt">Experiencia presencial y Meet &amp; Greet</span></li>
+        </ul>
+      </div>
     </div>
-    <p class="note center" style="margin-top:22px">*Aforo total: 100 personas. El Meet &amp; Greet tiene solo 20 cupos y quedan <span data-f="cupos-mg"></span>. Lo tachado en la Entrada es lo que suma el upgrade.</p>
+    <p class="note center" style="margin-top:22px">*Aforo presencial: 100 personas. La Entrada Online no tiene límite de cupos. El Meet &amp; Greet tiene solo 20 cupos y quedan <span data-f="cupos-mg"></span>. Lo tachado en la Entrada es lo que suma el upgrade.</p>
   </div>
 </section>
 
@@ -528,6 +554,7 @@
       <div class="opts">
         <button type="button" class="opt" data-pick="base" aria-pressed="true"><b>Entrada</b><span><span data-f="etapa"></span> · <span data-f="precio"></span></span></button>
         <button type="button" class="opt" data-pick="mg" aria-pressed="false"><b>Entrada + Meet &amp; Greet</b><span><span data-f="precio-mg"></span> · solo 20 · quedan <span data-f="cupos-mg"></span></span></button>
+        <button type="button" class="opt wide" data-pick="online" aria-pressed="false"><b>Entrada Online · en vivo</b><span><span data-f="precio-online"></span> · ves todo y participas en el Q&amp;A desde donde estés</span></button>
       </div>
       <form id="reg-form" class="reg-form" novalidate>
         <div class="step first">
@@ -552,7 +579,8 @@
               <button type="button" class="opt paytab" data-metodo="online" aria-pressed="true"><b>Pago online</b><span>Tarjeta de débito o crédito</span></button>
               <button type="button" class="opt paytab" data-metodo="transferencia" aria-pressed="false"><b>Transferencia</b><span>Desde tu banco</span></button>
             </div>
-            <div class="sum"><span>Entrada <span data-f="etapa"></span></span><span data-f="precio"></span></div>
+            <div class="sum" id="sum-base"><span>Entrada <span data-f="etapa"></span></span><span data-f="precio"></span></div>
+            <div class="sum" id="sum-online" hidden><span>Entrada Online · transmisión en vivo</span><span data-f="precio-online"></span></div>
             <div class="sum" id="sum-mg" hidden><span>Meet &amp; Greet con Odette</span><span>$15.000</span></div>
             <div class="sum total"><span>Total</span><span class="gt" data-f="total"></span></div>
           </div>
@@ -646,6 +674,7 @@
       <details><summary>¿Qué incluye mi entrada? <span class="plus gt">+</span></summary><p>Charlas, dinámicas, materiales y una experiencia inolvidable: las charlas de Ghadi, Flavyeanne y Odette, la mesa redonda con Kervy y Liss, el video especial de Wilker Smith y la dinámica de alto impacto del cierre.</p></details>
       <details><summary>¿Qué es el Meet &amp; Greet? <span class="plus gt">+</span></summary><p>Un encuentro en grupo pequeño con Odette después del cierre: ronda de preguntas, foto y un detalle de su marca. Son solo 20 cupos (hoy quedan 15) y se agrega por $15.000 al comprar tu entrada.</p></details>
       <details><summary>¿Cómo funcionan las etapas de precio? <span class="plus gt">+</span></summary><p>Early Bird es solo para las primeras 20 personas (hoy quedan 15). Luego se abre la Preventa por tiempo limitado y después la Venta general, hasta completar las 100 personas.</p></details>
+      <details><summary>¿Puedo participar si estoy fuera de Santiago o de Chile? <span class="plus gt">+</span></summary><p>Sí. Con la Entrada Online (<span data-f="precio-online"></span>) ves en vivo todas las ponencias, la mesa redonda y todo lo que pase ese día, y participas en los espacios de preguntas y respuestas que se abran durante el evento. El link de la transmisión lo compartimos el mismo día del evento en el grupo de WhatsApp, al que entras al confirmar tu entrada.</p></details>
       <details><summary>¿Necesito tener una marca o empresa formal? <span class="plus gt">+</span></summary><p>No. Este día es para cualquier persona que quiera entender y fortalecer la marca que está creando, ya sea un emprendimiento, un proyecto o su marca personal.</p></details>
       <details><summary>¿Cómo recibo mi entrada y qué pasa si no puedo asistir? <span class="plus gt">+</span></summary><p>Al registrarte te llega un correo con tu entrada <b>pendiente</b>. Cuando pagas y registras tu N° de comprobante, te llega tu entrada <b>confirmada</b> con tu código. [Política de cambios, transferencias y devoluciones].</p></details>
     </div>
@@ -710,6 +739,10 @@ var CONFIG = {
     'Venta general': ''                            // $50.000 — pendiente
   },
 
+  // ENTRADA ONLINE (transmisión en vivo): precio fijo, sin etapas ni cupos
+  precioOnline: 10000,
+  linkOnline: 'https://www.webpay.cl/form-pay/440073',   // $10.000
+
   // Pago por transferencia (activa: false para ocultar la opción)
   transferencia: {
     activa: true,
@@ -730,13 +763,17 @@ var CONFIG = {
   var idx = Math.max(0, ETAPAS.indexOf(CONFIG.etapa));
   var precio = PRECIOS[idx], precioMG = precio + 15000;
   var fmt = function(n){ return '$' + n.toLocaleString('es-CL'); };
-  var mg = false;
+  var mg = false, tipo = 'base';
+  var precioOnline = CONFIG.precioOnline || 10000;
+  function montoActual(){ return tipo === 'online' ? precioOnline : (mg ? precioMG : precio); }
+  function nombreEntrada(){ return tipo === 'online' ? 'Entrada Online' : (mg ? 'Entrada + Meet & Greet' : 'Entrada'); }
 
   function setAll(key, val){ document.querySelectorAll('[data-f="'+key+'"]').forEach(function(el){ el.textContent = val; }); }
   setAll('etapa', ETAPAS[idx]);
   setAll('etapa-num', String(idx+1));
   setAll('precio', fmt(precio));
   setAll('precio-mg', fmt(precioMG));
+  setAll('precio-online', fmt(precioOnline));
   setAll('cupos-early', String(CONFIG.cuposEarlyQuedan));
   setAll('cupos-mg', String(CONFIG.cuposMeetGreet));
   setAll('cupos-early-line', idx === 0 ? 'quedan ' + CONFIG.cuposEarlyQuedan + ' de 20 cupos Early Bird' : 'solo 100 lugares');
@@ -753,7 +790,7 @@ var CONFIG = {
 
   var payBtn = document.getElementById('submit-btn'), payMissing = document.getElementById('pay-missing');
   var form = document.getElementById('reg-form'), msg = document.getElementById('form-msg');
-  function currentLink(){ return (mg ? CONFIG.linksMeetGreet : CONFIG.linksEntrada)[ETAPAS[idx]] || ''; }
+  function currentLink(){ return tipo === 'online' ? (CONFIG.linkOnline || '') : ((mg ? CONFIG.linksMeetGreet : CONFIG.linksEntrada)[ETAPAS[idx]] || ''); }
 
   /* ---------- memoria de la reserva pendiente (en este navegador) ---------- */
   var KEY = 'lmqyc_reserva';
@@ -768,7 +805,7 @@ var CONFIG = {
   var filasT = [['Titular', T.titular], ['RUT', T.rut], ['Banco', T.banco], ['Tipo de cuenta', T.tipoCuenta], ['N° de cuenta', T.numeroCuenta], ['Correo', T.correo]]
     .filter(function(f){ return f[1]; });
   function textoTransferencia(monto){
-    return filasT.map(function(f){ return f[0] + ': ' + f[1]; }).join('\n') + '\nMonto: ' + (monto || fmt(mg ? precioMG : precio));
+    return filasT.map(function(f){ return f[0] + ': ' + f[1]; }).join('\n') + '\nMonto: ' + (monto || fmt(montoActual()));
   }
   function copiar(texto, btn){
     var ok = function(){ var t = btn.textContent; btn.textContent = '¡Copiado!'; setTimeout(function(){ btn.textContent = t; }, 1500); };
@@ -794,9 +831,11 @@ var CONFIG = {
   });
 
   function render(){
-    setAll('total', fmt(mg ? precioMG : precio));
+    setAll('total', fmt(montoActual()));
     document.getElementById('sum-mg').hidden = !mg;
-    document.querySelectorAll('.opt[data-pick]').forEach(function(o){ o.setAttribute('aria-pressed', String((o.dataset.pick === 'mg') === mg)); });
+    document.getElementById('sum-base').hidden = tipo === 'online';
+    document.getElementById('sum-online').hidden = tipo !== 'online';
+    document.querySelectorAll('.opt[data-pick]').forEach(function(o){ o.setAttribute('aria-pressed', String(o.dataset.pick === tipo)); });
     document.querySelectorAll('.paytab').forEach(function(o){ o.setAttribute('aria-pressed', String(o.dataset.metodo === metodo)); });
     var link = currentLink();
     if (metodo === 'transferencia' || link) { payBtn.hidden = false; payMissing.hidden = true; }
@@ -804,7 +843,7 @@ var CONFIG = {
       payBtn.hidden = true; payMissing.hidden = false;
       payMissing.textContent = transferActiva
         ? 'El pago online de esta opción se habilita pronto. Puedes pagar por transferencia.'
-        : (mg ? 'Las entradas con Meet & Greet de esta etapa se habilitan pronto. Escríbenos por WhatsApp para reservar.' : 'Las entradas de esta etapa se habilitan pronto. Escríbenos por WhatsApp para reservar.');
+        : (tipo === 'online' ? 'La Entrada Online se habilita pronto. Escríbenos por WhatsApp para reservar.' : mg ? 'Las entradas con Meet & Greet de esta etapa se habilitan pronto. Escríbenos por WhatsApp para reservar.' : 'Las entradas de esta etapa se habilitan pronto. Escríbenos por WhatsApp para reservar.');
     }
   }
 
@@ -821,14 +860,14 @@ var CONFIG = {
     var esT = metodo === 'transferencia';
     var link = esT ? '' : currentLink();
     if (!esT && !link) return;
-    var total = fmt(mg ? precioMG : precio);
+    var total = fmt(montoActual());
 
     var data = new URLSearchParams();
     new FormData(form).forEach(function(v, k){ data.append(k, v); });
     data.append('accion', 'registro');
-    data.append('entrada', mg ? 'Entrada + Meet & Greet' : 'Entrada');
-    data.append('etapa', ETAPAS[idx]);
-    data.append('monto', String(mg ? precioMG : precio));
+    data.append('entrada', nombreEntrada());
+    data.append('etapa', tipo === 'online' ? 'Online' : ETAPAS[idx]);
+    data.append('monto', String(montoActual()));
     data.append('linkPago', link);
     data.append('metodo', metodo);
     if (esT) data.append('datosTransferencia', textoTransferencia(total));
@@ -952,7 +991,7 @@ var CONFIG = {
       });
   });
   document.querySelectorAll('[data-pick]').forEach(function(el){
-    el.addEventListener('click', function(){ mg = el.dataset.pick === 'mg'; render(); });
+    el.addEventListener('click', function(){ tipo = el.dataset.pick; mg = tipo === 'mg'; render(); });
   });
   render();
 
